@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "231381507764",
-    "project_id": "colman-android-2023-67722",
-    "storage_bucket": "colman-android-2023-67722.appspot.com"
+    "project_number": "872272211399",
+    "project_id": "final-project-android-dogs",
+    "storage_bucket": "final-project-android-dogs.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:231381507764:android:941209cd702df1f7fe81e1",
+        "mobilesdk_app_id": "1:872272211399:android:72a793ebe903c74b597de2",
         "android_client_info": {
           "package_name": "com.example.class3demo2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "231381507764-0vfh0a6o2cmapc9of3a1qj024006flrl.apps.googleusercontent.com",
+          "client_id": "872272211399-en0a80k17s0eu68vckok9h0laq9mdji1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBb-y6dq4sTfkzyXfbc-qQMKSurLXE-owE"
+          "current_key": "AIzaSyBIGsIkW96F479oB-vJyGwbHXZxvFP-JL0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "231381507764-0vfh0a6o2cmapc9of3a1qj024006flrl.apps.googleusercontent.com",
+              "client_id": "872272211399-en0a80k17s0eu68vckok9h0laq9mdji1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
