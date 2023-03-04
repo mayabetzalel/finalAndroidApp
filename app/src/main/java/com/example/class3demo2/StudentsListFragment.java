@@ -21,6 +21,7 @@ import com.example.class3demo2.databinding.FragmentStudentsListBinding;
 import com.example.class3demo2.model.Model;
 import com.example.class3demo2.model.Movie;
 import com.example.class3demo2.model.MovieModel;
+import com.example.class3demo2.model.RandomDogPhotoModel;
 import com.example.class3demo2.model.Student;
 
 import java.util.LinkedList;
@@ -71,11 +72,9 @@ public class StudentsListFragment extends Fragment {
             reloadData();
         });
 
-        LiveData<List<Movie>> data = MovieModel.instance.searchMoviesByTitle("avatar");
-        data.observe(getViewLifecycleOwner(),list->{
-            list.forEach(item->{
-                Log.d("TAG","got movie: " + item.getTitle() + " " + item.getPoster());
-            });
+        LiveData<String> data = RandomDogPhotoModel.instance.getRandomDogPhoto();
+        data.observe(getViewLifecycleOwner(),photoURL->{
+            Log.d("TAG", "photoURL is: " + photoURL);
         });
 
         return view;
