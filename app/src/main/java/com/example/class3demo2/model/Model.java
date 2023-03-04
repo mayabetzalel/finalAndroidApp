@@ -93,4 +93,8 @@ public class Model {
         firebaseModel.registerUser(name, email, password, img);
     }
 
+    public void loginUser(String email, String password) {
+        firebaseModel.loginUser(email, password);
+    }
+
 }

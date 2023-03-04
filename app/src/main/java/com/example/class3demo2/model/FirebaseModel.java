@@ -1,6 +1,5 @@
 package com.example.class3demo2.model;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -9,15 +8,13 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
-import com.example.class3demo2.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -106,7 +103,7 @@ public class FirebaseModel{
 
     public void registerUser(String name, String email, String password, ImageView img) {
         auth = FirebaseAuth.getInstance();
-        auth.createUserWithEmailAndPassword(email, password) .addOnCompleteListener(task -> {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Log.d("AUTH", "Inserted user");
 
@@ -160,4 +157,34 @@ public class FirebaseModel{
             }
         });
     }
+
+    public void loginUser(String email, String password) {
+        auth = FirebaseAuth.getInstance();
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            AuthResult authResult = task.getResult();
+                            FirebaseUser user = authResult.getUser();
+                            Uri photo = user.getPhotoUrl();
+                            String photo1 = "null";
+                            if (photo != null) {
+                                photo1 = photo.toString();
+                            }
+
+                            String email = user.getEmail();
+                            String name = user.getDisplayName();
+
+                            Log.d("lotan", "photo: " + photo1);
+                            Log.d("lotan", "name: " + name);
+
+
+                        } else {
+                            Log.d("lotan", "error in login: " + task.getException());
+                        }
+                    }
+                });
+    }
+
 }
