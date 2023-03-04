@@ -13,14 +13,16 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
         Boolean isLoggedIn = false;
+        Intent intent;
         if (isLoggedIn) {
             Log.d("lotan", "going to main activity");
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            intent = new Intent(this, MainActivity.class);
         } else {
-            Log.d("lotan", "going to auth activity");
-            Intent intent = new Intent(this, AuthActivty.class);
-            startActivity(intent);
+            Log.d("lotan", "going to login activity");
+            intent = new Intent(this, LoginActivity.class);
         }
+
+        startActivity(intent);
+        finish();
     }
 }
