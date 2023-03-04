@@ -128,22 +128,13 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Still not registered?"
-            android:textColor=" #000000"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/login_tv_register_page"
+            android:id="@+id/register_tv_login_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:clickable="true"
-            android:text="click here to register page"
+            android:text="Still not registered? click here to register page"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/textView5" />
 
