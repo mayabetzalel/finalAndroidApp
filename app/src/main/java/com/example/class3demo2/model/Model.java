@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.ImageView;
 
 import androidx.core.os.HandlerCompat;
 import androidx.lifecycle.LiveData;
@@ -84,8 +85,12 @@ public class Model {
         });
     }
 
-    public void uploadImage(String name, Bitmap bitmap,Listener<String> listener) {
-        firebaseModel.uploadImage(name,bitmap,listener);
+    public void uploadImage(String folder, String name, Bitmap bitmap,Listener<String> listener) {
+        firebaseModel.uploadImage(folder, name, bitmap,listener);
+    }
+
+    public void registerUser(String name, String email, String password, ImageView img) {
+        firebaseModel.registerUser(name, email, password, img);
     }
 
 }
