@@ -158,7 +158,11 @@ public class FirebaseModel{
         });
     }
 
-    public void loginUser(String email, String password) {
+    public interface OnLoginCompleteListener {
+        void onLoginComplete(boolean success);
+    }
+
+    public void loginUser(String email, String password, OnLoginCompleteListener callback) {
         auth = FirebaseAuth.getInstance();
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -179,9 +183,13 @@ public class FirebaseModel{
                             Log.d("lotan", "photo: " + photo1);
                             Log.d("lotan", "name: " + name);
 
+                            callback.onLoginComplete(true);
+
 
                         } else {
                             Log.d("lotan", "error in login: " + task.getException());
+
+                            callback.onLoginComplete(false);
                         }
                     }
                 });

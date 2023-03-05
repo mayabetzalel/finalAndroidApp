@@ -93,8 +93,8 @@ public class Model {
         firebaseModel.registerUser(name, email, password, img);
     }
 
-    public void loginUser(String email, String password) {
-        firebaseModel.loginUser(email, password);
+    public void loginUser(String email, String password, FirebaseModel.OnLoginCompleteListener listener) {
+        firebaseModel.loginUser(email, password, listener);
     }
 
 }
