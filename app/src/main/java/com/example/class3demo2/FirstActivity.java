@@ -12,7 +12,7 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-        Boolean isLoggedIn = false;
+        Boolean isLoggedIn = true;
         Intent intent;
         if (isLoggedIn) {
             Log.d("lotan", "going to main activity");
