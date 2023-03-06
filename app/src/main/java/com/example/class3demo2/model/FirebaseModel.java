@@ -211,4 +211,24 @@ public class FirebaseModel{
         return loggedInUser;
     }
 
+    public void updateUserName(String name) {
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(name)
+                .build();
+        user.updateProfile(profileUpdates);
+    }
+
+    public void updateUserPhoto(Uri photo) {
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        UserProfileChangeRequest profilePictureUpdates = new UserProfileChangeRequest.Builder()
+                .setPhotoUri(photo)
+                .build();
+        user.updateProfile(profilePictureUpdates);
+    }
+
 }

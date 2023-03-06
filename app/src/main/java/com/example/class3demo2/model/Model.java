@@ -1,6 +1,7 @@
 package com.example.class3demo2.model;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -99,6 +100,14 @@ public class Model {
 
     public User getLoggedInUser() {
         return firebaseModel.getLoggedInUser();
+    }
+
+    public void updateUserName(String name) {
+        firebaseModel.updateUserName(name);
+    }
+
+    public void updateUserPhoto(Uri photo) {
+        firebaseModel.updateUserPhoto(photo);
     }
 
 }
