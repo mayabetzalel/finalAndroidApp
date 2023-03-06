@@ -231,4 +231,9 @@ public class FirebaseModel{
         user.updateProfile(profilePictureUpdates);
     }
 
+    public void logout() {
+        auth = FirebaseAuth.getInstance();
+        auth.signOut();
+    }
+
 }

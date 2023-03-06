@@ -11,6 +11,8 @@ import androidx.core.os.HandlerCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -108,6 +110,10 @@ public class Model {
 
     public void updateUserPhoto(Uri photo) {
         firebaseModel.updateUserPhoto(photo);
+    }
+
+    public void logout() {
+        firebaseModel.logout();
     }
 
 }

@@ -93,6 +93,13 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        View view = binding.getRoot();
+        setUpData(view);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -101,6 +108,12 @@ public class ProfileFragment extends Fragment {
 
         setUpData(view);
 
+        binding.profileLogoutBtn.setOnClickListener(view2 -> {
+           Model.instance().logout();
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        });
 
         binding.profileSaveBtn.setOnClickListener(view1 -> {
             String name = binding.profileNameEt.getText().toString();
@@ -142,4 +155,5 @@ public class ProfileFragment extends Fragment {
         });
         return view;
     }
+
 }

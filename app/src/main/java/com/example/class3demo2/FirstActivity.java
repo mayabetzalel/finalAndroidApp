@@ -17,6 +17,7 @@ public class FirstActivity extends AppCompatActivity {
         setContentView(R.layout.activity_first);
         User loggedInUser = Model.instance().getLoggedInUser();
         Intent intent;
+
         if (loggedInUser != null) {
             Log.d("lotan", "going to main activity");
             intent = new Intent(this, MainActivity.class);
