@@ -97,4 +97,8 @@ public class Model {
         firebaseModel.loginUser(email, password, listener);
     }
 
+    public User getLoggedInUser() {
+        return firebaseModel.getLoggedInUser();
+    }
+
 }

@@ -195,4 +195,20 @@ public class FirebaseModel{
                 });
     }
 
+    public User getLoggedInUser() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        if (user == null) return null;
+
+        Uri photo = user.getPhotoUrl();
+        String userPhoto = null;
+        if (photo != null) {
+            userPhoto = photo.toString();
+        }
+
+        User loggedInUser = new User(user.getEmail(), user.getDisplayName(), userPhoto);
+        return loggedInUser;
+    }
+
 }
