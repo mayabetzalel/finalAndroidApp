@@ -1,6 +1,7 @@
 package com.example.class3demo2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,16 +11,18 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.class3demo2.model.FirebaseModel;
 import com.example.class3demo2.model.Model;
+import com.example.class3demo2.model.RandomDogPhotoModel;
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
 
 public class LoginActivity extends AppCompatActivity implements FirebaseModel.OnLoginCompleteListener  {
 
     EditText emailET, passwordET;
-//    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     private Boolean validateLogin(View view) {
 
@@ -62,6 +65,15 @@ public class LoginActivity extends AppCompatActivity implements FirebaseModel.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ImageView randomPhoto = findViewById(R.id.login_random_photo);
+
+        LiveData<String> data = RandomDogPhotoModel.instance.getRandomDogPhoto();
+        data.observe(this, photoURL->{
+            Log.d("lotan", "photoURL is: " + photoURL);
+            Picasso.get().load(photoURL).into(randomPhoto);
+        });
+
 
         TextView goToRegister = findViewById(R.id.register_tv_login_page);
 

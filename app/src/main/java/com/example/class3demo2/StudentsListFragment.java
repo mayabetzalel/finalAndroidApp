@@ -66,11 +66,6 @@ public class StudentsListFragment extends Fragment {
             reloadData();
         });
 
-        LiveData<String> data = RandomDogPhotoModel.instance.getRandomDogPhoto();
-        data.observe(getViewLifecycleOwner(),photoURL->{
-            Log.d("TAG", "photoURL is: " + photoURL);
-        });
-
         return view;
     }
 

@@ -13,10 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.class3demo2.databinding.FragmentProfileBinding;
@@ -28,20 +30,18 @@ import com.squareup.picasso.Picasso;
 
 public class ProfileFragment extends Fragment {
 
+    private Boolean validateProfile(View view) {
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-//        User loggedInUser = Model.instance().getLoggedInUser();
-//        Log.d("lotan", "In profile");
-//        Log.d("lotan", "Email: " + loggedInUser.getEmail());
-//        Log.d("lotan", "Name: " + loggedInUser.getName());
-//        Log.d("lotan", "Photo: " + loggedInUser.getPhotoURL());
-//
-//         return view;
-//    }
+        EditText nameEt = view.findViewById(R.id.profile_name_et);
+        String name = nameEt.getText().toString();
+
+        if (TextUtils.isEmpty(name)) {
+            Snackbar.make(binding.getRoot(), "Please enter your name", Snackbar.LENGTH_LONG).show();
+            return false;
+        }
+
+        return true;
+    }
 
     FragmentProfileBinding binding;
     ActivityResultLauncher<Void> cameraLauncher;
@@ -116,30 +116,34 @@ public class ProfileFragment extends Fragment {
         });
 
         binding.profileSaveBtn.setOnClickListener(view1 -> {
-            String name = binding.profileNameEt.getText().toString();
 
-            Model.instance().updateUserName(name);
+            if (validateProfile(binding.getRoot())) {
+                String name = binding.profileNameEt.getText().toString();
 
-            User loggedInUser = Model.instance().getLoggedInUser();
+                Model.instance().updateUserName(name);
 
-            ImageView avatarImage = view.findViewById(R.id.editprofile_avatar_img);
+                User loggedInUser = Model.instance().getLoggedInUser();
 
-            if (isAvatarSelected) {
-                String id = loggedInUser.getEmail();
-                String FOLDER_NAME = "profileAvatars";
+                ImageView avatarImage = view.findViewById(R.id.editprofile_avatar_img);
 
-                avatarImage.setDrawingCacheEnabled(true);
-                avatarImage.buildDrawingCache();
-                Bitmap bitmap = ((BitmapDrawable) avatarImage.getDrawable()).getBitmap();
-                Model.instance().uploadImage(FOLDER_NAME, id, bitmap, url -> {
-                    if (url != null) {
-                        Uri photoUri = Uri.parse(url);
-                        Model.instance().updateUserPhoto(photoUri);
-                    }
-                });
+                if (isAvatarSelected) {
+                    String id = loggedInUser.getEmail();
+                    String FOLDER_NAME = "profileAvatars";
+
+                    avatarImage.setDrawingCacheEnabled(true);
+                    avatarImage.buildDrawingCache();
+                    Bitmap bitmap = ((BitmapDrawable) avatarImage.getDrawable()).getBitmap();
+                    Model.instance().uploadImage(FOLDER_NAME, id, bitmap, url -> {
+                        if (url != null) {
+                            Uri photoUri = Uri.parse(url);
+                            Model.instance().updateUserPhoto(photoUri);
+                        }
+                    });
+                }
+
+                Snackbar.make(view, "Profile information updated", Snackbar.LENGTH_LONG).show();
             }
 
-            Snackbar.make(view, "Profile information changed", Snackbar.LENGTH_LONG).show();
         });
 
         binding.profileCancelBtn.setOnClickListener(view1 -> {
