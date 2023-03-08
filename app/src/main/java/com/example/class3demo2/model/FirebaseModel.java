@@ -105,12 +105,8 @@ public class FirebaseModel{
         auth = FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                Log.d("AUTH", "Inserted user");
-
-                // User registration successful, update user profile
                 FirebaseUser user = auth.getCurrentUser();
 
-                // Set display name
                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                         .setDisplayName(name)
                         .build();
@@ -138,22 +134,6 @@ public class FirebaseModel{
 
             } else {
                 Log.d("AUTH", "failed to Insert user");
-
-//                try {
-//                    throw task.getException();
-//                } catch (FirebaseAuthWeakPasswordException e) {
-//                    Snackbar.make(getApplicationContext(), "Password is too weak", Toast.LENGTH_SHORT).show();
-//                } catch (FirebaseAuthInvalidCredentialsException e) {
-//                    if (!email.matches(emailPattern)) {
-//                        Snackbar.make(getApplicationContext(), "Invalid email address", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Snackbar.make(getApplicationContext(), "Invalid password format", Toast.LENGTH_SHORT).show();
-//                    }
-//                } catch (FirebaseAuthUserCollisionException e) {
-//                    Snackbar.make(getApplicationContext(), "Email address is already in use", Toast.LENGTH_SHORT).show();
-//                } catch (Exception e) {
-//                    Snackbar.make(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-//                }
             }
         });
     }
@@ -172,23 +152,9 @@ public class FirebaseModel{
                             AuthResult authResult = task.getResult();
                             FirebaseUser user = authResult.getUser();
                             Uri photo = user.getPhotoUrl();
-                            String photo1 = "null";
-                            if (photo != null) {
-                                photo1 = photo.toString();
-                            }
-
-                            String email = user.getEmail();
-                            String name = user.getDisplayName();
-
-                            Log.d("lotan", "photo: " + photo1);
-                            Log.d("lotan", "name: " + name);
-
                             callback.onLoginComplete(true);
-
-
                         } else {
                             Log.d("lotan", "error in login: " + task.getException());
-
                             callback.onLoginComplete(false);
                         }
                     }

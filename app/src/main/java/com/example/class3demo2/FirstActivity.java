@@ -19,10 +19,10 @@ public class FirstActivity extends AppCompatActivity {
         Intent intent;
 
         if (loggedInUser != null) {
-            Log.d("lotan", "going to main activity");
+            // The user is logged in so we go to MainActivity
             intent = new Intent(this, MainActivity.class);
         } else {
-            Log.d("lotan", "going to login activity");
+            // The user is logged in so we go to LoginActivity
             intent = new Intent(this, LoginActivity.class);
         }
 

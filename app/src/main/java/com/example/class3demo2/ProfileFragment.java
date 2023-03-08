@@ -75,15 +75,10 @@ public class ProfileFragment extends Fragment {
 
     public void setUpData(View view) {
         User loggedInUser = Model.instance().getLoggedInUser();
-        Log.d("lotan", "In profile");
-        Log.d("lotan", "Email: " + loggedInUser.getEmail());
-        Log.d("lotan", "Name: " + loggedInUser.getName());
-        Log.d("lotan", "Photo: " + loggedInUser.getPhotoURL());
 
         ImageView avatarImage = view.findViewById(R.id.editprofile_avatar_img);
 
         binding.profileNameEt.setText(loggedInUser.getName());
-
 
         if (loggedInUser.getPhotoURL() != null) {
             Picasso.get().load(loggedInUser.getPhotoURL()).placeholder(R.drawable.avatar).into(avatarImage);
@@ -109,7 +104,7 @@ public class ProfileFragment extends Fragment {
         setUpData(view);
 
         binding.profileLogoutBtn.setOnClickListener(view2 -> {
-           Model.instance().logout();
+            Model.instance().logout();
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
             getActivity().finish();

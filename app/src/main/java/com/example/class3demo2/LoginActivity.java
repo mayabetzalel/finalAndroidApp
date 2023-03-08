@@ -47,16 +47,13 @@ public class LoginActivity extends AppCompatActivity implements FirebaseModel.On
 
     @Override
     public void onLoginComplete(boolean success) {
-        Log.d("lotan", "onLoginComplete");
         if (success) {
-            Log.d("lotan", "success");
-            // Login successful, continue with app flow
+            // Login successful so we go MainActivity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
         } else {
-            Log.d("lotan", "not success");
-            // Login unsuccessful, show error message
+            // Login successful so we notify the user
             Snackbar.make(findViewById(android.R.id.content), "Email or password are incorrect", Snackbar.LENGTH_LONG).show();
         }
     }
@@ -66,11 +63,12 @@ public class LoginActivity extends AppCompatActivity implements FirebaseModel.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Show the random image
+
         ImageView randomPhoto = findViewById(R.id.login_random_photo);
 
         LiveData<String> data = RandomDogPhotoModel.instance.getRandomDogPhoto();
         data.observe(this, photoURL->{
-            Log.d("lotan", "photoURL is: " + photoURL);
             Picasso.get().load(photoURL).into(randomPhoto);
         });
 
@@ -87,29 +85,13 @@ public class LoginActivity extends AppCompatActivity implements FirebaseModel.On
 
         Button loginButton = findViewById(R.id.login_btn_login);
 
-
-
         loginButton.setOnClickListener(view -> {
 
             String email = emailET.getText().toString();
             String password = passwordET.getText().toString();
 
             if (validateLogin(view)) {
-
                     Model.instance().loginUser(email, password, this);
-
-//                    // Todo: save user data
-//
-//
-//                    Intent intent = new Intent(this, MainActivity.class);
-//                    startActivity(intent);
-//                    finish();
-//
-//                    // Todo: know if there is error
-////                    Log.d("lotan", "Error in login: " + exception.getMessage());
-////                    Snackbar.make(findViewById(android.R.id.content), "Email or password are incorect", Snackbar.LENGTH_LONG).show();
-
-
                 };
             });
 
