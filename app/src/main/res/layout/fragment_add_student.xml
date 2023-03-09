@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddStudentFragment">
+    tools:context=".AddDogFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -62,7 +62,7 @@
                     android:id="@+id/idEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Dog Name" />
+                    android:hint="Dog Id" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -76,6 +76,38 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/nameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dog Name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                app:startIconDrawable="@drawable/ic_baseline_edit_calendar_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ageEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dog Age" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                app:startIconDrawable="@drawable/ic_baseline_edit_calendar_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descriptionEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Dog Description" />

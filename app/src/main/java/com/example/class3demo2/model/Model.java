@@ -88,6 +88,13 @@ public class Model {
         });
     }
 
+    public void addDog(Dog dog, Listener<Void> listener){
+        firebaseModel.addDog(dog,(Void)->{
+            refreshAllStudents();
+            listener.onComplete(null);
+        });
+    }
+
     public void uploadImage(String folder, String name, Bitmap bitmap,Listener<String> listener) {
         firebaseModel.uploadImage(folder, name, bitmap,listener);
     }

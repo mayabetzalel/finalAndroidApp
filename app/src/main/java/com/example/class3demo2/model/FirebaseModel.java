@@ -74,6 +74,16 @@ public class FirebaseModel{
         });
     }
 
+    public void addDog(Dog dog, Model.Listener<Void> listener) {
+        db.collection(Dog.COLLECTION).document(dog.getId()).set(dog.toJson())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        listener.onComplete(null);
+                    }
+                });
+    }
+
     void uploadImage(String folder, String name, Bitmap bitmap, Model.Listener<String> listener){
         StorageReference storageRef = storage.getReference();
         StorageReference imagesRef = storageRef.child(folder + "/" + name + ".jpg");
@@ -98,7 +108,6 @@ public class FirebaseModel{
                 });
             }
         });
-
     }
 
     public void registerUser(String name, String email, String password, ImageView img) {
@@ -130,8 +139,6 @@ public class FirebaseModel{
                         }
                     });
                 }
-
-
             } else {
                 Log.d("AUTH", "failed to Insert user");
             }

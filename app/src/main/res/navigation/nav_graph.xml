@@ -29,11 +29,11 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/addStudentFragment"
-        android:name="com.example.class3demo2.AddStudentFragment"
-        android:label="Add Student"
+        android:id="@+id/addDogFragment"
+        android:name="com.example.class3demo2.AddDogFragment"
+        android:label="Add Dog"
         tools:layout="@layout/fragment_add_student" />
-    <action android:id="@+id/action_global_addStudentFragment" app:destination="@id/addStudentFragment" />
+    <action android:id="@+id/action_global_addStudentFragment" app:destination="@id/addDogFragment" />
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.class3demo2.AboutFragment"
