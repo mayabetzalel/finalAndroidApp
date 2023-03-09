@@ -22,6 +22,11 @@
         <argument
             android:name="blueTitle"
             app:argType="string" />
+        <argument
+            android:name="blueId"
+            app:argType="string" />
+        <argument android:name="blueImage"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addStudentFragment"
