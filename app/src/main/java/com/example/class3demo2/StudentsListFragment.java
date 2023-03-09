@@ -43,7 +43,7 @@ public class StudentsListFragment extends Fragment {
             public void onItemClick(int pos) {
                 Log.d("TAG", "Row was clicked " + pos);
                 Student st = viewModel.getData().getValue().get(pos);
-                StudentsListFragmentDirections.ActionStudentsListFragmentToBlueFragment action = StudentsListFragmentDirections.actionStudentsListFragmentToBlueFragment(st.name);
+                StudentsListFragmentDirections.ActionStudentsListFragmentToBlueFragment action = StudentsListFragmentDirections.actionStudentsListFragmentToBlueFragment(st.name, st.id, st.avatarUrl);
                 Navigation.findNavController(view).navigate(action);
             }
         });
