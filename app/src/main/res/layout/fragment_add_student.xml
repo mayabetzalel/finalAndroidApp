@@ -62,7 +62,7 @@
                     android:id="@+id/idEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Student ID" />
+                    android:hint="Dog Name" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -78,7 +78,7 @@
                     android:id="@+id/nameEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Student name" />
+                    android:hint="Dog Description" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.LinearLayoutCompat
