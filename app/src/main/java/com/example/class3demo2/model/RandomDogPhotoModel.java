@@ -50,7 +50,7 @@ public class RandomDogPhotoModel {
 
             @Override
             public void onFailure(Call<RandomDogPhoto> call, Throwable t) {
-                Log.d("TAG","----- getRandomDogPhoto fail");
+                Log.d("TAG","getRandomDogPhoto fail");
             }
         });
         return data;

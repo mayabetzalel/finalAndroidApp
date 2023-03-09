@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,13 +18,8 @@ import android.view.ViewGroup;
 
 import com.example.class3demo2.databinding.FragmentStudentsListBinding;
 import com.example.class3demo2.model.Model;
-import com.example.class3demo2.model.Movie;
-import com.example.class3demo2.model.MovieModel;
 import com.example.class3demo2.model.RandomDogPhotoModel;
 import com.example.class3demo2.model.Student;
-
-import java.util.LinkedList;
-import java.util.List;
 
 public class StudentsListFragment extends Fragment {
     FragmentStudentsListBinding binding;
@@ -70,11 +64,6 @@ public class StudentsListFragment extends Fragment {
 
         binding.swipeRefresh.setOnRefreshListener(()->{
             reloadData();
-        });
-
-        LiveData<String> data = RandomDogPhotoModel.instance.getRandomDogPhoto();
-        data.observe(getViewLifecycleOwner(),photoURL->{
-            Log.d("TAG", "photoURL is: " + photoURL);
         });
 
         return view;
