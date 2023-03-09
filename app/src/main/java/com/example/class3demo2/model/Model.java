@@ -1,13 +1,17 @@
 package com.example.class3demo2.model;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.ImageView;
 
 import androidx.core.os.HandlerCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -84,8 +88,32 @@ public class Model {
         });
     }
 
-    public void uploadImage(String name, Bitmap bitmap,Listener<String> listener) {
-        firebaseModel.uploadImage(name,bitmap,listener);
+    public void uploadImage(String folder, String name, Bitmap bitmap,Listener<String> listener) {
+        firebaseModel.uploadImage(folder, name, bitmap,listener);
+    }
+
+    public void registerUser(String name, String email, String password, ImageView img) {
+        firebaseModel.registerUser(name, email, password, img);
+    }
+
+    public void loginUser(String email, String password, FirebaseModel.OnLoginCompleteListener listener) {
+        firebaseModel.loginUser(email, password, listener);
+    }
+
+    public User getLoggedInUser() {
+        return firebaseModel.getLoggedInUser();
+    }
+
+    public void updateUserName(String name) {
+        firebaseModel.updateUserName(name);
+    }
+
+    public void updateUserPhoto(Uri photo) {
+        firebaseModel.updateUserPhoto(photo);
+    }
+
+    public void logout() {
+        firebaseModel.logout();
     }
 
 }

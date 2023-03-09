@@ -89,7 +89,7 @@ public class AddStudentFragment extends Fragment {
                 binding.avatarImg.setDrawingCacheEnabled(true);
                 binding.avatarImg.buildDrawingCache();
                 Bitmap bitmap = ((BitmapDrawable) binding.avatarImg.getDrawable()).getBitmap();
-                Model.instance().uploadImage(stId, bitmap, url->{
+                Model.instance().uploadImage("images", stId, bitmap, url->{
                     if (url != null){
                         st.setAvatarUrl(url);
                     }
