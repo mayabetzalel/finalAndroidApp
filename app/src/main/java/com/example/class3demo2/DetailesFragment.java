@@ -15,7 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-public class BlueFragment extends Fragment {
+public class DetailesFragment extends Fragment {
     TextView titleTv;
     ImageView avatarImage;
     TextView idTv;
@@ -25,8 +25,8 @@ public class BlueFragment extends Fragment {
 
     String img;
 
-    public static BlueFragment newInstance(String title, String id, String img ){
-        BlueFragment frag = new BlueFragment();
+    public static DetailesFragment newInstance(String title, String id, String img ){
+        DetailesFragment frag = new DetailesFragment();
         Bundle bundle = new Bundle();
         bundle.putString("TITLE",title);
         frag.setArguments(bundle);
@@ -47,11 +47,11 @@ public class BlueFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blue, container, false);
+        View view = inflater.inflate(R.layout.fragment_detailes, container, false);
 
-        title = BlueFragmentArgs.fromBundle(getArguments()).getBlueTitle();
-        id = BlueFragmentArgs.fromBundle(getArguments()).getBlueId();
-        img = BlueFragmentArgs.fromBundle(getArguments()).getBlueImage();
+        title = DetailesFragmentArgs.fromBundle(getArguments()).getBlueTitle();
+        id = DetailesFragmentArgs.fromBundle(getArguments()).getBlueId();
+        img = DetailesFragmentArgs.fromBundle(getArguments()).getBlueImage();
 
         TextView titleTv = view.findViewById(R.id.bluefrag_title_tv);
         TextView idTv = view.findViewById(R.id.bluefrag_id_tv);

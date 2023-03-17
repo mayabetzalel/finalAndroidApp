@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/studentsListFragment"
         android:name="com.example.class3demo2.StudentsListFragment"
-        android:label="Students List"
+        android:label="Dogs List"
         tools:layout="@layout/fragment_students_list">
         <action
             android:id="@+id/action_studentsListFragment_to_blueFragment"
@@ -16,16 +16,17 @@
     </fragment>
     <fragment
         android:id="@+id/blueFragment"
-        android:name="com.example.class3demo2.BlueFragment"
-        android:label="fragment_blue"
-        tools:layout="@layout/fragment_blue" >
+        android:name="com.example.class3demo2.DetailesFragment"
+        android:label="dog detailes"
+        tools:layout="@layout/fragment_detailes">
         <argument
             android:name="blueTitle"
             app:argType="string" />
         <argument
             android:name="blueId"
             app:argType="string" />
-        <argument android:name="blueImage"
+        <argument
+            android:name="blueImage"
             app:argType="string" />
     </fragment>
     <fragment
