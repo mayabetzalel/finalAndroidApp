@@ -28,6 +28,12 @@
         <argument
             android:name="blueImage"
             app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="age"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/addDogFragment"

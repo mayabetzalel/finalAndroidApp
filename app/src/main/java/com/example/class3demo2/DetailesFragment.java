@@ -1,12 +1,12 @@
 package com.example.class3demo2;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -20,10 +20,10 @@ public class DetailesFragment extends Fragment {
     ImageView avatarImage;
     TextView idTv;
     String title;
-
     String id;
-
     String img;
+    String description;
+    Long age;
 
     public static DetailesFragment newInstance(String title, String id, String img ){
         DetailesFragment frag = new DetailesFragment();
@@ -52,15 +52,23 @@ public class DetailesFragment extends Fragment {
         title = DetailesFragmentArgs.fromBundle(getArguments()).getBlueTitle();
         id = DetailesFragmentArgs.fromBundle(getArguments()).getBlueId();
         img = DetailesFragmentArgs.fromBundle(getArguments()).getBlueImage();
+        description = DetailesFragmentArgs.fromBundle(getArguments()).getDescription();
+        age = DetailesFragmentArgs.fromBundle(getArguments()).getAge();
 
-        TextView titleTv = view.findViewById(R.id.bluefrag_title_tv);
-        TextView idTv = view.findViewById(R.id.bluefrag_id_tv);
-        ImageView imgTv = view.findViewById(R.id.bluefrag_image_tv);
-        if (title != null) {
-            titleTv.setText(title);
+//        TextView titleTv = view.findViewById(R.id.description);
+        TextView idTv = view.findViewById(R.id.name);
+        ImageView imgTv = view.findViewById(R.id.image);
+        TextView ageTv = view.findViewById(R.id.age);
+        TextView descriptionTv = view.findViewById(R.id.description);
+
+        if (description != null) {
+            descriptionTv.setText(description);
         }
         if (id != null) {
             idTv.setText(id);
+        }
+        if (age != null) {
+            ageTv.setText(age + " years old");
         }
         if(img != null) {
             Picasso.get().load(img).into(imgTv);
