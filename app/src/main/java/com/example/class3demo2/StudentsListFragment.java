@@ -2,15 +2,6 @@ package com.example.class3demo2;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +9,14 @@ import android.view.ViewGroup;
 
 import com.example.class3demo2.databinding.FragmentStudentsListBinding;
 import com.example.class3demo2.model.Model;
-import com.example.class3demo2.model.RandomDogPhotoModel;
 import com.example.class3demo2.model.Student;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class StudentsListFragment extends Fragment {
     FragmentStudentsListBinding binding;
@@ -35,7 +32,7 @@ public class StudentsListFragment extends Fragment {
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new StudentRecyclerAdapter(getLayoutInflater(),viewModel.getData().getValue());
+        adapter = new StudentRecyclerAdapter(getLayoutInflater(),viewModel.getDataByUser().getValue());
         binding.recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(new StudentRecyclerAdapter.OnItemClickListener() {
@@ -54,7 +51,7 @@ public class StudentsListFragment extends Fragment {
 
         binding.progressBar.setVisibility(View.GONE);
 
-        viewModel.getData().observe(getViewLifecycleOwner(),list->{
+        viewModel.getDataByUser().observe(getViewLifecycleOwner(),list->{
             adapter.setData(list);
         });
 

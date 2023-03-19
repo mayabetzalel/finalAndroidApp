@@ -7,16 +7,13 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.ImageView;
 
-import androidx.core.os.HandlerCompat;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
-import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+
+import androidx.core.os.HandlerCompat;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 public class Model {
     private static final Model _instance = new Model();
@@ -51,6 +48,12 @@ public class Model {
             refreshAllStudents();
         }
         return studentList;
+    }
+
+    public LiveData<List<Student>> getAllDogsByUser() {
+        User curUser = getLoggedInUser();
+        LiveData<List<Student>> dogByUserList = localDb.studentDao().getAllByUser(curUser.getEmail());
+        return dogByUserList;
     }
 
     public void refreshAllStudents(){

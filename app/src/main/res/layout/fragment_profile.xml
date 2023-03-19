@@ -58,6 +58,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp">
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/list_item" />
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/profile_name_et"
                     android:layout_width="match_parent"
@@ -86,13 +92,6 @@
                     android:layout_weight="1"
                     android:text="RESET" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
                 <Button
                     android:id="@+id/profile_logout_btn"
                     android:layout_width="0dp"
@@ -101,17 +100,16 @@
                     android:layout_weight="1"
                     android:background="#F44336"
                     android:text="LOGOUT" />
-
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
     </ScrollView>
 

@@ -5,11 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.class3demo2.databinding.FragmentFirstBinding;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
-
-import com.example.class3demo2.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
 

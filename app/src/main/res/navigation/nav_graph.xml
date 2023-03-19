@@ -47,8 +47,20 @@
         android:label="About"
         tools:layout="@layout/fragment_about" />
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/ProfileFragment"
         android:name="com.example.class3demo2.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/PersonalDogListFragment"
+        android:name="com.example.class3demo2.ProfileFragment"
+        android:label="PersonalDogListFragment"
+        tools:layout="@layout/fragment_personal_dog_list" />
+
+    <fragment
+        android:id="@+id/dogList"
+        android:name="com.example.class3demo2.ProfileFragment"
+        android:label="dogList"
+        tools:layout="@layout/fragment_dog_list" />
 </navigation>

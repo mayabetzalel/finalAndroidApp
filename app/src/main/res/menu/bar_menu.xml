@@ -10,7 +10,7 @@
         android:icon="@android:drawable/ic_input_add"
         android:title="Add" />
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/ProfileFragment"
         android:icon="@android:drawable/ic_menu_myplaces"
         android:title="Profile" />
 </menu>

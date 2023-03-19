@@ -1,20 +1,13 @@
 package com.example.class3demo2;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,9 +20,17 @@ import com.example.class3demo2.model.User;
 import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class ProfileFragment extends Fragment {
-
+    Dialog myDialog;
     private Boolean validateProfile(View view) {
 
         EditText nameEt = view.findViewById(R.id.profile_name_et);
@@ -48,11 +49,12 @@ public class ProfileFragment extends Fragment {
     ActivityResultLauncher<String> galleryLauncher;
     Boolean isAvatarSelected = false;
 
+    StudentRecyclerAdapter adapter;
+    StudentsListFragmentViewModel viewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         cameraLauncher = registerForActivityResult(new ActivityResultContracts.TakePicturePreview(), new ActivityResultCallback<Bitmap>() {
             @Override
             public void onActivityResult(Bitmap result) {
@@ -71,6 +73,7 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
+
     }
 
     public void setUpData(View view) {
@@ -87,12 +90,19 @@ public class ProfileFragment extends Fragment {
         }
     }
 
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        viewModel = new ViewModelProvider(this).get(StudentsListFragmentViewModel.class);
+    }
+
     @Override
     public void onStart() {
         super.onStart();
         View view = binding.getRoot();
         setUpData(view);
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -101,7 +111,18 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+
+
+        binding.recyclerView.setHasFixedSize(true);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new StudentRecyclerAdapter(getLayoutInflater(),viewModel.getDataByUser().getValue());
+        binding.recyclerView.setAdapter(adapter);
+
         setUpData(view);
+
+        viewModel.getDataByUser().observe(getViewLifecycleOwner(),list->{
+            adapter.setData(list);
+        });
 
         binding.profileLogoutBtn.setOnClickListener(view2 -> {
             Model.instance().logout();
@@ -152,7 +173,8 @@ public class ProfileFragment extends Fragment {
         binding.galleryButton.setOnClickListener(view1 -> {
             galleryLauncher.launch("image/*");
         });
+
+
         return view;
     }
-
 }

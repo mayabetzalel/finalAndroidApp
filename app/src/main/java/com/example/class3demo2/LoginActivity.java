@@ -91,15 +91,8 @@ public class LoginActivity extends AppCompatActivity implements FirebaseModel.On
             String password = passwordET.getText().toString();
 
             if (validateLogin(view)) {
-                    Model.instance().loginUser(email, password, this);
-                };
-            });
-
-
-
-        }
-
-
-
-
+                Model.instance().loginUser(email, password, this);
+            }
+        });
     }
+}

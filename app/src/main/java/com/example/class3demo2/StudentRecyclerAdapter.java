@@ -7,13 +7,13 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.class3demo2.model.Student;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 class StudentViewHolder extends RecyclerView.ViewHolder{
@@ -97,6 +97,4 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHold
         if (data == null) return 0;
         return data.size();
     }
-
 }
-
