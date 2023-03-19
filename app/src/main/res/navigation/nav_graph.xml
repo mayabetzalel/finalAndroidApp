@@ -6,6 +6,30 @@
     app:startDestination="@id/studentsListFragment">
 
     <fragment
+        android:id="@+id/PersonalDogListFragment"
+        android:name="com.example.class3demo2.ProfileFragment"
+        android:label="PersonalDogListFragment"
+        tools:layout="@layout/fragment_personal_dog_list" >
+        <argument
+            android:name="idDog"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dogList"
+        android:name="com.example.class3demo2.ProfileFragment"
+        android:label="dogList"
+        tools:layout="@layout/fragment_dog_list" />
+    <fragment
+        android:id="@+id/editDogFragment"
+        android:name="com.example.class3demo2.EditDogFragment"
+        android:label="fragment_edit_dog"
+        tools:layout="@layout/fragment_edit_dog" >
+        <argument
+            android:name="dogId"
+            app:argType="string" />
+    </fragment>
+    <fragment
         android:id="@+id/studentsListFragment"
         android:name="com.example.class3demo2.StudentsListFragment"
         android:label="Dogs List"
@@ -54,26 +78,5 @@
         <action
             android:id="@+id/action_ProfileFragment_to_editDogFragment"
             app:destination="@id/editDogFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/PersonalDogListFragment"
-        android:name="com.example.class3demo2.ProfileFragment"
-        android:label="PersonalDogListFragment"
-        tools:layout="@layout/fragment_personal_dog_list" />
-
-    <fragment
-        android:id="@+id/dogList"
-        android:name="com.example.class3demo2.ProfileFragment"
-        android:label="dogList"
-        tools:layout="@layout/fragment_dog_list" />
-    <fragment
-        android:id="@+id/editDogFragment"
-        android:name="com.example.class3demo2.EditDogFragment"
-        android:label="fragment_edit_dog"
-        tools:layout="@layout/fragment_edit_dog" >
-        <argument
-            android:name="dogId"
-            app:argType="string" />
     </fragment>
 </navigation>

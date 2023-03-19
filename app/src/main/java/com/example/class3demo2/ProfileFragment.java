@@ -132,7 +132,10 @@ public class ProfileFragment extends Fragment {
             public void onItemClick(int pos) {
                 Log.d("TAG", "Row was clicked " + pos);
                 Student st = viewModel.getDataByUser().getValue().get(pos);
-                ProfileFragmentDirections.ActionProfileFragmentToEditDogFragment action = ProfileFragmentDirections.actionProfileFragmentToEditDogFragment(st.id);
+                ProfileFragmentDirections.ActionProfileFragmentToEditDogFragment action;
+                action = ProfileFragmentDirections.actionProfileFragmentToEditDogFragment(st.id);
+
+//                action = ProfileFragmentDirections.actionProfileFragmentToEditDogFragment(st.id);
 //                ProfileFragmentDirections.ActionProfileFragmentToBlueFragment action = ProfileFragmentDirections.actionProfileFragmentToBlueFragment(st.name, st.id, st.avatarUrl, st.description, st.age);
                 Navigation.findNavController(view).navigate(action);
             }
