@@ -50,7 +50,11 @@
         android:id="@+id/ProfileFragment"
         android:name="com.example.class3demo2.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_ProfileFragment_to_editDogFragment"
+            app:destination="@id/editDogFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/PersonalDogListFragment"
@@ -63,4 +67,13 @@
         android:name="com.example.class3demo2.ProfileFragment"
         android:label="dogList"
         tools:layout="@layout/fragment_dog_list" />
+    <fragment
+        android:id="@+id/editDogFragment"
+        android:name="com.example.class3demo2.EditDogFragment"
+        android:label="fragment_edit_dog"
+        tools:layout="@layout/fragment_edit_dog" >
+        <argument
+            android:name="dogId"
+            app:argType="string" />
+    </fragment>
 </navigation>

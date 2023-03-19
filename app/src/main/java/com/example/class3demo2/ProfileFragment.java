@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 
 import com.example.class3demo2.databinding.FragmentProfileBinding;
 import com.example.class3demo2.model.Model;
+import com.example.class3demo2.model.Student;
 import com.example.class3demo2.model.User;
 import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
@@ -27,6 +29,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class ProfileFragment extends Fragment {
@@ -124,15 +127,16 @@ public class ProfileFragment extends Fragment {
             adapter.setData(list);
         });
 
-//        adapter.setOnItemClickListener(new StudentRecyclerAdapter.OnItemClickListener() {
-////            @Override
-////            public void onItemClick(int pos) {
-////                Log.d("TAG", "Row was clicked " + pos);
-////                Student st = viewModel.getData().getValue().get(pos);
-////                StudentsListFragmentDirections.ActionStudentsListFragmentToBlueFragment action = StudentsListFragmentDirections.actionStudentsListFragmentToBlueFragment(st.name, st.id, st.avatarUrl, st.description, st.age);
-////                Navigation.findNavController(view).navigate(action);
-////            }
-////        });
+        adapter.setOnItemClickListener(new StudentRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int pos) {
+                Log.d("TAG", "Row was clicked " + pos);
+                Student st = viewModel.getDataByUser().getValue().get(pos);
+                ProfileFragmentDirections.ActionProfileFragmentToEditDogFragment action = ProfileFragmentDirections.actionProfileFragmentToEditDogFragment(st.id);
+//                ProfileFragmentDirections.ActionProfileFragmentToBlueFragment action = ProfileFragmentDirections.actionProfileFragmentToBlueFragment(st.name, st.id, st.avatarUrl, st.description, st.age);
+                Navigation.findNavController(view).navigate(action);
+            }
+        });
 
         binding.profileLogoutBtn.setOnClickListener(view2 -> {
             Model.instance().logout();
