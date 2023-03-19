@@ -22,8 +22,10 @@ class StudentViewHolder extends RecyclerView.ViewHolder{
     CheckBox cb;
     List<Student> data;
     ImageView avatarImage;
-    public StudentViewHolder(@NonNull View itemView, StudentRecyclerAdapter.OnItemClickListener listener, List<Student> data) {
+    boolean isFromProfile = false;
+    public StudentViewHolder(@NonNull View itemView, StudentRecyclerAdapter.OnItemClickListener listener, List<Student> data, boolean isFromProfileInput) {
         super(itemView);
+        isFromProfile = isFromProfileInput;
         this.data = data;
         nameTv = itemView.findViewById(R.id.studentlistrow_name_tv);
         idTv = itemView.findViewById(R.id.studentlistrow_id_tv);
@@ -37,6 +39,11 @@ class StudentViewHolder extends RecyclerView.ViewHolder{
                 st.cb = cb.isChecked();
             }
         });
+
+        if(isFromProfile) {
+            itemView.findViewById(R.id.editButton).setVisibility(itemView.VISIBLE);
+        }
+
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,14 +74,18 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHold
 
     LayoutInflater inflater;
     List<Student> data;
+
+    boolean isFromProfile;
     public void setData(List<Student> data){
         this.data = data;
         notifyDataSetChanged();
     }
-    public StudentRecyclerAdapter(LayoutInflater inflater, List<Student> data){
+    public StudentRecyclerAdapter(LayoutInflater inflater, List<Student> data, boolean isFromProfile){
         this.inflater = inflater;
         this.data = data;
+        this.isFromProfile = isFromProfile;
     }
+
 
     void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;
@@ -83,7 +94,7 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHold
     @Override
     public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.student_list_row,parent,false);
-        return new StudentViewHolder(view,listener, data);
+        return new StudentViewHolder(view,listener, data, this.isFromProfile);
     }
 
     @Override

@@ -115,7 +115,7 @@ public class ProfileFragment extends Fragment {
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new StudentRecyclerAdapter(getLayoutInflater(),viewModel.getDataByUser().getValue());
+        adapter = new StudentRecyclerAdapter(getLayoutInflater(),viewModel.getDataByUser().getValue(), true);
         binding.recyclerView.setAdapter(adapter);
 
         setUpData(view);
@@ -123,6 +123,16 @@ public class ProfileFragment extends Fragment {
         viewModel.getDataByUser().observe(getViewLifecycleOwner(),list->{
             adapter.setData(list);
         });
+
+//        adapter.setOnItemClickListener(new StudentRecyclerAdapter.OnItemClickListener() {
+////            @Override
+////            public void onItemClick(int pos) {
+////                Log.d("TAG", "Row was clicked " + pos);
+////                Student st = viewModel.getData().getValue().get(pos);
+////                StudentsListFragmentDirections.ActionStudentsListFragmentToBlueFragment action = StudentsListFragmentDirections.actionStudentsListFragmentToBlueFragment(st.name, st.id, st.avatarUrl, st.description, st.age);
+////                Navigation.findNavController(view).navigate(action);
+////            }
+////        });
 
         binding.profileLogoutBtn.setOnClickListener(view2 -> {
             Model.instance().logout();
