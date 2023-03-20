@@ -111,7 +111,7 @@
                         android:id="@+id/recyclerView"
                         android:layout_width="379dp"
                         android:layout_height="match_parent"
-                        tools:listitem="@layout/list_item" />
+                        />
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
 
