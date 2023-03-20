@@ -22,7 +22,7 @@ public class Student {
 
     public String name = "";
     public String avatarUrl = "";
-    public Boolean cb = false;
+    public Boolean cb = true;
     public Long lastUpdated;
     public String description = "";
     public String createdBy = "";

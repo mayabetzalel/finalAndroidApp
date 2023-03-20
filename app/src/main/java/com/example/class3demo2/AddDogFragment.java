@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import com.example.class3demo2.databinding.FragmentAddStudentBinding;
 import com.example.class3demo2.model.Dog;
 import com.example.class3demo2.model.Model;
+import com.example.class3demo2.model.RandomDogPhotoModel;
 
 public class AddDogFragment extends Fragment {
     FragmentAddStudentBinding binding;
@@ -79,10 +80,11 @@ public class AddDogFragment extends Fragment {
         binding.saveBtn.setOnClickListener(view1 -> {
             String name = binding.nameEt.getText().toString();
             String id = binding.idEt.getText().toString();
-            double age = Double.parseDouble(binding.ageEt.getText().toString());
+            Long age = Long.parseLong(binding.ageEt.getText().toString());
             String desc = binding.descriptionEt.getText().toString();
             String createdBy = Model.instance().getLoggedInUser().getEmail();
-            Dog dog = new Dog(id, createdBy, name, "", age, desc);
+            String defualtAvatarUrl = "https://firebasestorage.googleapis.com/v0/b/final-project-android-dogs.appspot.com/o/dogs%2Favatar.jpg?alt=media&token=6fb24fe5-a46a-40c2-aae4-9a9674eaba7b";
+            Dog dog = new Dog(id, createdBy, name, defualtAvatarUrl, true, age, desc);
 
             if (isAvatarSelected){
                 binding.avatarImg.setDrawingCacheEnabled(true);
