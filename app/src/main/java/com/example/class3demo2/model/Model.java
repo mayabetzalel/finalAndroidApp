@@ -43,10 +43,10 @@ public class Model {
 
     private LiveData<List<Student>> studentList;
     public LiveData<List<Student>> getAllStudents() {
-        if(studentList == null){
-            studentList = localDb.studentDao().getAll();
-            refreshAllStudents();
-        }
+//        if(studentList == null){
+        studentList = localDb.studentDao().getAll();
+//            refreshAllStudents();
+//        }
         return studentList;
     }
 

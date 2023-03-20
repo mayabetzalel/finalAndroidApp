@@ -32,7 +32,7 @@ public class StudentsListFragment extends Fragment {
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new StudentRecyclerAdapter(getLayoutInflater(),viewModel.getData().getValue(), false);
+        adapter = new StudentRecyclerAdapter(getLayoutInflater(), viewModel.getData().getValue(), false);
         binding.recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(new StudentRecyclerAdapter.OnItemClickListener() {
