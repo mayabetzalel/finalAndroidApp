@@ -87,7 +87,7 @@ public class EditDogFragment extends Fragment {
 
             if(description != newDesc) {
                 Model.instance().updateDogByField(id, "description", newDesc, (used) -> {
-                    Navigation.findNavController(view1).popBackStack();
+//                    Navigation.findNavController(view1).popBackStack();
                 });
             }
         });
