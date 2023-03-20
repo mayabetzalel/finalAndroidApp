@@ -20,6 +20,9 @@ public interface StudentDao {
     @Query("select * from Student where createdBy= :createdBy")
     LiveData<List<Student>> getAllByUser(String createdBy);
 
+    @Query("delete from Student")
+    void update();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(Student... students);
 
