@@ -63,7 +63,7 @@ public class DetailesFragment extends Fragment {
             descriptionTv.setText(description);
         }
         if (id != null) {
-            idTv.setText(id);
+            idTv.setText(title);
         }
         if (age != null) {
             ageTv.setText(age + " years old");

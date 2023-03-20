@@ -85,7 +85,7 @@ public class EditDogFragment extends Fragment {
 
             if (name != newName) {
                 Model.instance().updateDogByField(id, "name", newName, (used) -> {
-                    Navigation.findNavController(view1).popBackStack();
+                    Model.instance().refreshAllStudents();
                 });
             }
 
@@ -100,7 +100,6 @@ public class EditDogFragment extends Fragment {
                     Model.instance().refreshAllStudents();
                 });
             }
-            Navigation.findNavController(view1).popBackStack();
 
         });
         return view;
