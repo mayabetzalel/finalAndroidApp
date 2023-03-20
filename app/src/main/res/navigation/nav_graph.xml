@@ -6,25 +6,10 @@
     app:startDestination="@id/studentsListFragment">
 
     <fragment
-        android:id="@+id/PersonalDogListFragment"
-        android:name="com.example.class3demo2.ProfileFragment"
-        android:label="PersonalDogListFragment"
-        tools:layout="@layout/fragment_personal_dog_list" >
-        <argument
-            android:name="idDog"
-            app:argType="string" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/dogList"
-        android:name="com.example.class3demo2.ProfileFragment"
-        android:label="dogList"
-        tools:layout="@layout/fragment_dog_list" />
-    <fragment
         android:id="@+id/editDogFragment"
         android:name="com.example.class3demo2.EditDogFragment"
-        android:label="fragment_edit_dog"
-        tools:layout="@layout/fragment_edit_dog" >
+        android:label="Edit Post"
+        tools:layout="@layout/fragment_edit_dog">
         <argument
             android:name="dogName"
             app:argType="string" />
@@ -74,7 +59,7 @@
     <fragment
         android:id="@+id/addDogFragment"
         android:name="com.example.class3demo2.AddDogFragment"
-        android:label="Add Dog"
+        android:label="Add New Dog"
         tools:layout="@layout/fragment_add_student" />
     <action android:id="@+id/action_global_addStudentFragment" app:destination="@id/addDogFragment" />
     <fragment
@@ -85,8 +70,8 @@
     <fragment
         android:id="@+id/ProfileFragment"
         android:name="com.example.class3demo2.ProfileFragment"
-        android:label="Profile"
-        tools:layout="@layout/fragment_profile" >
+        android:label="My Profile"
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_ProfileFragment_to_editDogFragment"
             app:destination="@id/editDogFragment" />
