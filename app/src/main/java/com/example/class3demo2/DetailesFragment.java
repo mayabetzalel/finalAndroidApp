@@ -1,12 +1,10 @@
 package com.example.class3demo2;
 
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -75,7 +73,7 @@ public class DetailesFragment extends Fragment {
         }
 
         View button = view.findViewById(R.id.bluefrag_back_btn);
-        button.setOnClickListener((view1)->{
+        button.setOnClickListener((view1)-> {
             Navigation.findNavController(view1).popBackStack();
         });
         return view;

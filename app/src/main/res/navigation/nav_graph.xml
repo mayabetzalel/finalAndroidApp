@@ -26,6 +26,18 @@
         android:label="fragment_edit_dog"
         tools:layout="@layout/fragment_edit_dog" >
         <argument
+            android:name="dogName"
+            app:argType="string" />
+        <argument
+            android:name="dogAge"
+            app:argType="long" />
+        <argument
+            android:name="dogDescription"
+            app:argType="string" />
+        <argument
+            android:name="dogImage"
+            app:argType="string" />
+        <argument
             android:name="dogId"
             app:argType="string" />
     </fragment>

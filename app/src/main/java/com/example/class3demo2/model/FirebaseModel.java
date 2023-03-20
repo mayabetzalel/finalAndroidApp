@@ -6,8 +6,6 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,6 +26,8 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.util.LinkedList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 public class FirebaseModel{
     FirebaseFirestore db;
@@ -82,6 +82,30 @@ public class FirebaseModel{
                         listener.onComplete(null);
                     }
                 });
+    }
+
+    public void deleteDog(String dogId, Model.Listener<Void> listener) {
+        db.collection(Dog.COLLECTION).document(dogId).delete()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                listener.onComplete(null);
+            }
+        });
+    }
+
+    public void updateByField(String dogId,String field, Object value, Model.Listener<Void> listener) {
+        db.collection(Dog.COLLECTION).document(dogId).update(field, value, "lastUpdated", java.time.LocalDateTime.now())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        listener.onComplete(null);
+                    }
+                });
+    }
+    public void updateDog(Dog dog, Model.Listener<Void> listener) {
+        deleteDog(dog.getId(), listener);
+        addDog(dog, listener);
     }
 
     void uploadImage(String folder, String name, Bitmap bitmap, Model.Listener<String> listener){
@@ -208,5 +232,4 @@ public class FirebaseModel{
         auth = FirebaseAuth.getInstance();
         auth.signOut();
     }
-
 }

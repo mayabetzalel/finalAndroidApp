@@ -98,6 +98,28 @@ public class Model {
         });
     }
 
+    public void deleteDog(String dogId, Listener<Void> listener){
+        firebaseModel.deleteDog(dogId,(Void)->{
+            refreshAllStudents();
+            listener.onComplete(null);
+        });
+    }
+
+    public void updateDog(Dog dog, Listener<Void> listener){
+        firebaseModel.updateDog(dog,(Void)->{
+            refreshAllStudents();
+            listener.onComplete(null);
+        });
+    }
+
+    public void updateDogByField(String dogId, String field, Object value, Listener<Void> listener){
+        firebaseModel.updateByField(dogId, field, value, (Void)->{
+            refreshAllStudents();
+            listener.onComplete(null);
+
+        });
+    }
+
     public void uploadImage(String folder, String name, Bitmap bitmap,Listener<String> listener) {
         firebaseModel.uploadImage(folder, name, bitmap,listener);
     }
