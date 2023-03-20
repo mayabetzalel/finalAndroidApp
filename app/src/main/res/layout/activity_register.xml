@@ -145,12 +145,15 @@
             app:boxCornerRadiusBottomEnd="5dp"
             app:boxCornerRadiusBottomStart="5dp"
             app:boxStrokeWidth="0dp"
+            app:passwordToggleEnabled="true"
+            android:inputType="textPassword"
             app:boxStrokeWidthFocused="0dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/register_password_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
