@@ -50,6 +50,12 @@ public class Model {
         return studentList;
     }
 
+//    public LiveData<List<Student>> getAllDogsByUser() {
+//        User curUser = getLoggedInUser();
+//        LiveData<List<Student>> dogByUserList = localDb.studentDao().getAllByUser(curUser.getEmail());
+//        return dogByUserList;
+//    }
+
     public LiveData<List<Student>> getAllDogsByUser() {
         User curUser = getLoggedInUser();
         LiveData<List<Student>> dogByUserList = localDb.studentDao().getAllByUser(curUser.getEmail());
@@ -60,6 +66,11 @@ public class Model {
         EventStudentsListLoadingState.setValue(LoadingState.LOADING);
         // get local last update
         Long localLastUpdate = Student.getLocalLastUpdate();
+
+        executor.execute(()->{
+            localDb.studentDao().update();
+        });
+
         // get all updated recorde from firebase since local last update
         firebaseModel.getAllStudentsSince(localLastUpdate,list->{
             executor.execute(()->{
@@ -68,13 +79,11 @@ public class Model {
                 for(Student st:list){
                     // insert new records into ROOM
                     localDb.studentDao().insertAll(st);
-                    if (time < st.getLastUpdated()){
-                        time = st.getLastUpdated();
-                    }
                 }
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
+                    Log.d("lotan", e.getMessage());
                     e.printStackTrace();
                 }
                 // update local last update
@@ -82,6 +91,8 @@ public class Model {
                 EventStudentsListLoadingState.postValue(LoadingState.NOT_LOADING);
             });
         });
+
+
     }
 
     public void addStudent(Student st, Listener<Void> listener){
