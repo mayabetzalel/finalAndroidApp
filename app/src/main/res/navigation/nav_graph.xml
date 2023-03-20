@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/studentsListFragment">
+    app:startDestination="@id/studentsListFragment"
+    android:textColor="@color/black">
 
     <fragment
         android:id="@+id/editDogFragment"
@@ -30,6 +31,7 @@
         android:id="@+id/studentsListFragment"
         android:name="com.example.class3demo2.StudentsListFragment"
         android:label="Dogs List"
+        android:textColor="@android:color/black"
         tools:layout="@layout/fragment_students_list">
         <action
             android:id="@+id/action_studentsListFragment_to_blueFragment"

@@ -76,23 +76,34 @@ public class EditDogFragment extends Fragment {
             String newDesc = oldDesc.getText().toString();
 
             TextView oldAge = view.findViewById(R.id.age);
-            String newAge = oldAge.getText().toString();
+            String nAge = oldAge.getText().toString();
+            long newAge = age;
+            Boolean isValidAge = oldAge.getText().toString().matches("[0-9]+");
+            if (isValidAge) {
+                newAge = Long.parseLong(nAge);
+            }
 
-
-            if(name != newName) {
+            if (name != newName) {
                 Model.instance().updateDogByField(id, "name", newName, (used) -> {
                     Navigation.findNavController(view1).popBackStack();
                 });
             }
 
-            if(description != newDesc) {
+            if (description != newDesc) {
                 Model.instance().updateDogByField(id, "description", newDesc, (used) -> {
-                    Navigation.findNavController(view1).popBackStack();
+                    Model.instance().refreshAllStudents();
                 });
             }
-        });
 
-        //TODO: add age and fix updates list
+            if (age != newAge) {
+                Model.instance().updateDogByField(id, "age", newAge, (used) -> {
+                    Model.instance().refreshAllStudents();
+                });
+            }
+            Navigation.findNavController(view1).popBackStack();
+
+        });
         return view;
+
     }
 }

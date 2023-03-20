@@ -124,7 +124,12 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="SAVE" />
+                android:text="SAVE"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#000000"
+                android:textStyle="bold"
+                android:textColorLink="#FFFFFF"/>
 
             <Button
                 android:id="@+id/cancellBtn"
@@ -132,7 +137,12 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="CANCEL" />
+                android:text="CANCEL"
+                android:textColor="#FFFFFF"
+                android:textColorHighlight="#FFFFFF"
+                android:textColorHint="#000000"
+                android:textStyle="bold"
+                android:textColorLink="#FFFFFF"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
 

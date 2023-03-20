@@ -12,8 +12,8 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/name"
-        android:layout_width="315dp"
-        android:layout_height="47dp"
+        android:layout_width="278dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:hint="new name"
         android:textSize="20sp"
@@ -24,24 +24,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.084" />
 
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/age"
-        android:layout_width="315dp"
-        android:layout_height="45dp"
+        android:layout_width="278dp"
+        android:layout_height="46dp"
         android:gravity="center"
         android:hint="new age"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.271" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/description"
-        android:layout_width="281dp"
-        android:layout_height="113dp"
+        android:layout_width="278dp"
+        android:layout_height="75dp"
         android:gravity="center"
         android:hint="new description"
         android:textSize="20sp"
@@ -50,8 +51,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.427" />
-
+        app:layout_constraintVertical_bias="0.42" />
 
     <TextView
         android:id="@+id/textViewName"
@@ -117,7 +117,12 @@
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.609" />
+        app:layout_constraintVertical_bias="0.609"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#000000"
+        android:textStyle="bold"
+        android:textColorLink="#FFFFFF" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
