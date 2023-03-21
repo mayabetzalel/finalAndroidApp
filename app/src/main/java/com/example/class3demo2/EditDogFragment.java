@@ -75,35 +75,34 @@ public class EditDogFragment extends Fragment {
 
             if(isValidAge) {
                 newAge = Long.parseLong(nAge);
-                if(newAge >= 31) {
-                    newAge = age;
+                if(newAge < 31) {
+                    if(!name.equals(newName)) {
+                        Model.instance().updateDogByField(id, "name", newName, (used) -> {
+//                            Snackbar.make(view, "Dog Updated", Snackbar.LENGTH_LONG).show();
+                        });
+                    }
+
+                    if(!description.equals(newDesc)) {
+                        Model.instance().updateDogByField(id, "description", newDesc, (used) -> {
+//                            Snackbar.make(view, "Dog Updated", Snackbar.LENGTH_LONG).show();
+                        });
+                    }
+
+                    if(age != newAge) {
+                        Model.instance().updateDogByField(id, "age", newAge, (used) -> {
+//                            Snackbar.make(view, "Dog Updated", Snackbar.LENGTH_LONG).show();
+                        });
+                    }
+
+                    if(isAvailable != isSwitchState) {
+                        Model.instance().updateDogByField(id, "cb", isSwitchState, (used) -> {
+
+                        });
+                    }
+                    Snackbar.make(view, "Dog Updated", Snackbar.LENGTH_LONG).show();
+                } else {
+                    Snackbar.make(view, "Age is not valid! Must be under 31", Snackbar.LENGTH_LONG).show();
                 }
-            } else {
-                Snackbar.make(view, "Age is not valid", Snackbar.LENGTH_LONG).show();
-            }
-
-            if(!name.equals(newName)) {
-                Model.instance().updateDogByField(id, "name", newName, (used) -> {
-                    Snackbar.make(view, "Name Changed", Snackbar.LENGTH_LONG).show();
-                });
-            }
-
-            if(!description.equals(newDesc)) {
-                Model.instance().updateDogByField(id, "description", newDesc, (used) -> {
-                    Snackbar.make(view, "Description Changed", Snackbar.LENGTH_LONG).show();
-                });
-            }
-
-            if(age != newAge) {
-                Model.instance().updateDogByField(id, "age", newAge, (used) -> {
-                    Snackbar.make(view, "Age Changed", Snackbar.LENGTH_LONG).show();
-                });
-            }
-
-            if(isAvailable != isSwitchState) {
-                Model.instance().updateDogByField(id, "cb", isSwitchState, (used) -> {
-                    Snackbar.make(view, "Check box Changed", Snackbar.LENGTH_LONG).show();
-                });
             }
         });
 
