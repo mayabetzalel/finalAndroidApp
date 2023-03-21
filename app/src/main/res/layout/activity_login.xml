@@ -104,11 +104,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:boxCornerRadiusBottomEnd="5dp"
+            app:passwordToggleEnabled="true"
+            android:inputType="textPassword"
             app:boxCornerRadiusBottomStart="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/login_password_et"
                 android:layout_width="match_parent"
+                android:inputType="textPassword"
                 android:layout_height="50dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
