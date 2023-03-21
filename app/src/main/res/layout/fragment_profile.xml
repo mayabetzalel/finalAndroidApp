@@ -31,7 +31,7 @@
                 <ImageView
                     android:id="@+id/editprofile_avatar_img"
                     android:layout_width="400dp"
-                    android:layout_height="250dp"
+                    android:layout_height="200dp"
                     android:layout_marginTop="8dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/reg_image" />
