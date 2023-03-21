@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.class3demo2.model.User;
+import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.Nullable;
@@ -22,6 +24,8 @@ public class DetailesFragment extends Fragment {
     String img;
     String description;
     Long age;
+
+    String createdBy;
 
     public static DetailesFragment newInstance(String title, String id, String img ){
         DetailesFragment frag = new DetailesFragment();
@@ -52,8 +56,8 @@ public class DetailesFragment extends Fragment {
         img = DetailesFragmentArgs.fromBundle(getArguments()).getBlueImage();
         description = DetailesFragmentArgs.fromBundle(getArguments()).getDescription();
         age = DetailesFragmentArgs.fromBundle(getArguments()).getAge();
+        createdBy = DetailesFragmentArgs.fromBundle(getArguments()).getCreatedBy();
 
-//        TextView titleTv = view.findViewById(R.id.description);
         TextView idTv = view.findViewById(R.id.name);
         ImageView imgTv = view.findViewById(R.id.image);
         TextView ageTv = view.findViewById(R.id.age);
@@ -72,10 +76,13 @@ public class DetailesFragment extends Fragment {
             Picasso.get().load(img).into(imgTv);
         }
 
-        View button = view.findViewById(R.id.bluefrag_back_btn);
+        View button = view.findViewById(R.id.adopt_me_btn);
         button.setOnClickListener((view1)-> {
-            Navigation.findNavController(view1).popBackStack();
+            Snackbar.make(view, "You are one step away from finiding your true friend " +
+                    "Contact its owner: " + createdBy, Snackbar.LENGTH_LONG).show();
         });
+
+
         return view;
     }
 

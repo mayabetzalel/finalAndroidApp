@@ -57,6 +57,9 @@
         <argument
             android:name="age"
             app:argType="long" />
+        <argument
+            android:name="createdBy"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addDogFragment"
