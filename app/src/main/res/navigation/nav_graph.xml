@@ -3,35 +3,85 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/studentsListFragment">
+    app:startDestination="@id/studentsListFragment"
+    android:textColor="@color/black">
 
+    <fragment
+        android:id="@+id/editDogFragment"
+        android:name="com.example.class3demo2.EditDogFragment"
+        android:label="Edit Post"
+        tools:layout="@layout/fragment_edit_dog">
+        <argument
+            android:name="dogName"
+            app:argType="string" />
+        <argument
+            android:name="dogAge"
+            app:argType="long" />
+        <argument
+            android:name="dogDescription"
+            app:argType="string" />
+        <argument
+            android:name="dogImage"
+            app:argType="string" />
+        <argument
+            android:name="dogId"
+            app:argType="string" />
+        <argument
+            android:name="dogCb"
+            app:argType="boolean" />
+    </fragment>
     <fragment
         android:id="@+id/studentsListFragment"
         android:name="com.example.class3demo2.StudentsListFragment"
-        android:label="Students List"
-        tools:layout="@layout/fragment_students_list">
+        android:label="Dogs List"
+        android:textColor="@android:color/black"
+        tools:layout="@layout/fragment_dogs_list">
         <action
             android:id="@+id/action_studentsListFragment_to_blueFragment"
             app:destination="@id/blueFragment" />
     </fragment>
     <fragment
         android:id="@+id/blueFragment"
-        android:name="com.example.class3demo2.BlueFragment"
-        android:label="fragment_blue"
-        tools:layout="@layout/fragment_blue" >
+        android:name="com.example.class3demo2.DetailesFragment"
+        android:label="dog detailes"
+        tools:layout="@layout/fragment_detailes">
         <argument
             android:name="blueTitle"
             app:argType="string" />
+        <argument
+            android:name="blueId"
+            app:argType="string" />
+        <argument
+            android:name="blueImage"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="age"
+            app:argType="long" />
+        <argument
+            android:name="createdBy"
+            app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/addStudentFragment"
-        android:name="com.example.class3demo2.AddStudentFragment"
-        android:label="Add Student"
-        tools:layout="@layout/fragment_add_student" />
-    <action android:id="@+id/action_global_addStudentFragment" app:destination="@id/addStudentFragment" />
+        android:id="@+id/addDogFragment"
+        android:name="com.example.class3demo2.AddDogFragment"
+        android:label="Add New Dog"
+        tools:layout="@layout/fragment_add_dog" />
+    <action android:id="@+id/action_global_addStudentFragment" app:destination="@id/addDogFragment" />
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.class3demo2.AboutFragment"
         android:label="About"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/ProfileFragment"
+        android:name="com.example.class3demo2.ProfileFragment"
+        android:label="My Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_ProfileFragment_to_editDogFragment"
+            app:destination="@id/editDogFragment" />
+    </fragment>
 </navigation>

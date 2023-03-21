@@ -6,10 +6,11 @@
         android:icon="@android:drawable/btn_star"
         android:title="List" />
     <item
-        android:id="@+id/addStudentFragment"
+        android:id="@+id/addDogFragment"
         android:icon="@android:drawable/ic_input_add"
         android:title="Add" />
     <item
-        android:icon="@android:drawable/checkbox_on_background"
-        android:title="About" />
+        android:id="@+id/ProfileFragment"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="Profile" />
 </menu>

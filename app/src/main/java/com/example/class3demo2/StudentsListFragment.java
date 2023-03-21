@@ -2,54 +2,46 @@ package com.example.class3demo2;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.class3demo2.databinding.FragmentStudentsListBinding;
+import com.example.class3demo2.databinding.FragmentDogsListBinding;
 import com.example.class3demo2.model.Model;
-import com.example.class3demo2.model.Movie;
-import com.example.class3demo2.model.MovieModel;
-import com.example.class3demo2.model.RandomDogPhotoModel;
 import com.example.class3demo2.model.Student;
 
-import java.util.LinkedList;
-import java.util.List;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class StudentsListFragment extends Fragment {
-    FragmentStudentsListBinding binding;
-    StudentRecyclerAdapter adapter;
-    StudentsListFragmentViewModel viewModel;
+    FragmentDogsListBinding binding;
+    DogRecyclerAdapter adapter;
+    DogsListFragmentViewModel viewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentStudentsListBinding.inflate(inflater, container, false);
+        binding = FragmentDogsListBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new StudentRecyclerAdapter(getLayoutInflater(),viewModel.getData().getValue());
+        adapter = new DogRecyclerAdapter(getLayoutInflater(), viewModel.getData().getValue(), false);
         binding.recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new StudentRecyclerAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new DogRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int pos) {
                 Log.d("TAG", "Row was clicked " + pos);
+                Log.d("TAG", "Row " + viewModel.getData().getValue());
                 Student st = viewModel.getData().getValue().get(pos);
-                StudentsListFragmentDirections.ActionStudentsListFragmentToBlueFragment action = StudentsListFragmentDirections.actionStudentsListFragmentToBlueFragment(st.name);
+                StudentsListFragmentDirections.ActionStudentsListFragmentToBlueFragment action = StudentsListFragmentDirections.actionStudentsListFragmentToBlueFragment(st.name, st.id, st.avatarUrl, st.description, st.age, st.createdBy);
                 Navigation.findNavController(view).navigate(action);
             }
         });
@@ -72,18 +64,13 @@ public class StudentsListFragment extends Fragment {
             reloadData();
         });
 
-        LiveData<String> data = RandomDogPhotoModel.instance.getRandomDogPhoto();
-        data.observe(getViewLifecycleOwner(),photoURL->{
-            Log.d("TAG", "photoURL is: " + photoURL);
-        });
-
         return view;
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        viewModel = new ViewModelProvider(this).get(StudentsListFragmentViewModel.class);
+        viewModel = new ViewModelProvider(this).get(DogsListFragmentViewModel.class);
     }
 
     void reloadData(){

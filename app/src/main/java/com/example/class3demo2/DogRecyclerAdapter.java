@@ -7,23 +7,25 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.class3demo2.model.Student;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-class StudentViewHolder extends RecyclerView.ViewHolder{
+
+class DogViewHolder extends RecyclerView.ViewHolder{
     TextView nameTv;
     TextView idTv;
     CheckBox cb;
     List<Student> data;
     ImageView avatarImage;
-    public StudentViewHolder(@NonNull View itemView, StudentRecyclerAdapter.OnItemClickListener listener, List<Student> data) {
+    boolean isFromProfile = false;
+    public DogViewHolder(@NonNull View itemView, DogRecyclerAdapter.OnItemClickListener listener, List<Student> data, boolean isFromProfileInput) {
         super(itemView);
+        isFromProfile = isFromProfileInput;
         this.data = data;
         nameTv = itemView.findViewById(R.id.studentlistrow_name_tv);
         idTv = itemView.findViewById(R.id.studentlistrow_id_tv);
@@ -37,6 +39,11 @@ class StudentViewHolder extends RecyclerView.ViewHolder{
                 st.cb = cb.isChecked();
             }
         });
+
+        if(isFromProfile) {
+            itemView.findViewById(R.id.editButton).setVisibility(itemView.VISIBLE);
+        }
+
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +66,7 @@ class StudentViewHolder extends RecyclerView.ViewHolder{
     }
 }
 
-public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHolder>{
+public class DogRecyclerAdapter extends RecyclerView.Adapter<DogViewHolder>{
     OnItemClickListener listener;
     public static interface OnItemClickListener{
         void onItemClick(int pos);
@@ -67,27 +74,31 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHold
 
     LayoutInflater inflater;
     List<Student> data;
+
+    boolean isFromProfile;
     public void setData(List<Student> data){
         this.data = data;
         notifyDataSetChanged();
     }
-    public StudentRecyclerAdapter(LayoutInflater inflater, List<Student> data){
+    public DogRecyclerAdapter(LayoutInflater inflater, List<Student> data, boolean isFromProfile){
         this.inflater = inflater;
         this.data = data;
+        this.isFromProfile = isFromProfile;
     }
+
 
     void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;
     }
     @NonNull
     @Override
-    public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.student_list_row,parent,false);
-        return new StudentViewHolder(view,listener, data);
+    public DogViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = inflater.inflate(R.layout.dog_list_row,parent,false);
+        return new DogViewHolder(view,listener, data, this.isFromProfile);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DogViewHolder holder, int position) {
         Student st = data.get(position);
         holder.bind(st,position);
     }
@@ -97,6 +108,4 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHold
         if (data == null) return 0;
         return data.size();
     }
-
 }
-

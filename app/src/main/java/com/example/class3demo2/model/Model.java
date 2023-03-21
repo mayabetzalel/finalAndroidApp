@@ -1,18 +1,19 @@
 package com.example.class3demo2.model;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.ImageView;
+
+import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import androidx.core.os.HandlerCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 public class Model {
     private static final Model _instance = new Model();
@@ -42,17 +43,34 @@ public class Model {
 
     private LiveData<List<Student>> studentList;
     public LiveData<List<Student>> getAllStudents() {
-        if(studentList == null){
-            studentList = localDb.studentDao().getAll();
-            refreshAllStudents();
-        }
+//        if(studentList == null){
+        studentList = localDb.studentDao().getAll();
+//            refreshAllStudents();
+//        }
         return studentList;
+    }
+
+//    public LiveData<List<Student>> getAllDogsByUser() {
+//        User curUser = getLoggedInUser();
+//        LiveData<List<Student>> dogByUserList = localDb.studentDao().getAllByUser(curUser.getEmail());
+//        return dogByUserList;
+//    }
+
+    public LiveData<List<Student>> getAllDogsByUser() {
+        User curUser = getLoggedInUser();
+        LiveData<List<Student>> dogByUserList = localDb.studentDao().getAllByUser(curUser.getEmail());
+        return dogByUserList;
     }
 
     public void refreshAllStudents(){
         EventStudentsListLoadingState.setValue(LoadingState.LOADING);
         // get local last update
         Long localLastUpdate = Student.getLocalLastUpdate();
+
+        executor.execute(()->{
+            localDb.studentDao().update();
+        });
+
         // get all updated recorde from firebase since local last update
         firebaseModel.getAllStudentsSince(localLastUpdate,list->{
             executor.execute(()->{
@@ -61,13 +79,11 @@ public class Model {
                 for(Student st:list){
                     // insert new records into ROOM
                     localDb.studentDao().insertAll(st);
-                    if (time < st.getLastUpdated()){
-                        time = st.getLastUpdated();
-                    }
                 }
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
+                    Log.d("lotan", e.getMessage());
                     e.printStackTrace();
                 }
                 // update local last update
@@ -75,6 +91,8 @@ public class Model {
                 EventStudentsListLoadingState.postValue(LoadingState.NOT_LOADING);
             });
         });
+
+
     }
 
     public void addStudent(Student st, Listener<Void> listener){
@@ -84,8 +102,61 @@ public class Model {
         });
     }
 
-    public void uploadImage(String name, Bitmap bitmap,Listener<String> listener) {
-        firebaseModel.uploadImage(name,bitmap,listener);
+    public void addDog(Dog dog, Listener<Void> listener){
+        firebaseModel.addDog(dog,(Void)->{
+            refreshAllStudents();
+            listener.onComplete(null);
+        });
+    }
+
+    public void deleteDog(String dogId, Listener<Void> listener){
+        firebaseModel.deleteDog(dogId,(Void)->{
+            refreshAllStudents();
+            listener.onComplete(null);
+        });
+    }
+
+    public void updateDog(Dog dog, Listener<Void> listener){
+        firebaseModel.updateDog(dog,(Void)->{
+            refreshAllStudents();
+            listener.onComplete(null);
+        });
+    }
+
+    public void updateDogByField(String dogId, String field, Object value, Listener<Void> listener){
+        firebaseModel.updateByField(dogId, field, value, (Void)->{
+            refreshAllStudents();
+            listener.onComplete(null);
+
+        });
+    }
+
+    public void uploadImage(String folder, String name, Bitmap bitmap,Listener<String> listener) {
+        firebaseModel.uploadImage(folder, name, bitmap,listener);
+    }
+
+    public void registerUser(String name, String email, String password, ImageView img) {
+        firebaseModel.registerUser(name, email, password, img);
+    }
+
+    public void loginUser(String email, String password, FirebaseModel.OnLoginCompleteListener listener) {
+        firebaseModel.loginUser(email, password, listener);
+    }
+
+    public User getLoggedInUser() {
+        return firebaseModel.getLoggedInUser();
+    }
+
+    public void updateUserName(String name) {
+        firebaseModel.updateUserName(name);
+    }
+
+    public void updateUserPhoto(Uri photo) {
+        firebaseModel.updateUserPhoto(photo);
+    }
+
+    public void logout() {
+        firebaseModel.logout();
     }
 
 }
