@@ -82,13 +82,13 @@ public class EditDogFragment extends Fragment {
                 Snackbar.make(view, "Age is not valid", Snackbar.LENGTH_LONG).show();
             }
 
-            if(name.equals(newName)) {
+            if(!name.equals(newName)) {
                 Model.instance().updateDogByField(id, "name", newName, (used) -> {
                     Snackbar.make(view, "Name Changed", Snackbar.LENGTH_LONG).show();
                 });
             }
 
-            if(description.equals(newDesc)) {
+            if(!description.equals(newDesc)) {
                 Model.instance().updateDogByField(id, "description", newDesc, (used) -> {
                     Snackbar.make(view, "Description Changed", Snackbar.LENGTH_LONG).show();
                 });
