@@ -9,6 +9,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,18 +24,17 @@
             android:orientation="vertical">
 
 
-
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/editprofile_avatar_img"
-                    android:layout_width="match_parent"
+                    android:layout_width="400dp"
                     android:layout_height="250dp"
                     android:layout_marginTop="8dp"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/avatar" />
+                    app:srcCompat="@drawable/reg_image" />
 
                 <ImageButton
                     android:id="@+id/galleryButton"
@@ -82,8 +83,8 @@
                     android:textColor="#FFFFFF"
                     android:textColorHighlight="#FFFFFF"
                     android:textColorHint="#000000"
-                    android:textStyle="bold"
-                    android:textColorLink="#FFFFFF" />
+                    android:textColorLink="#FFFFFF"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/profile_cancel_btn"
@@ -95,8 +96,8 @@
                     android:textColor="#FFFFFF"
                     android:textColorHighlight="#FFFFFF"
                     android:textColorHint="#000000"
-                    android:textStyle="bold"
-                    android:textColorLink="#FFFFFF" />
+                    android:textColorLink="#FFFFFF"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/profile_logout_btn"
@@ -108,8 +109,8 @@
                     android:textColor="#FFFFFF"
                     android:textColorHighlight="#FFFFFF"
                     android:textColorHint="#000000"
-                    android:textStyle="bold"
-                    android:textColorLink="#FFFFFF" />
+                    android:textColorLink="#FFFFFF"
+                    android:textStyle="bold" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.core.widget.NestedScrollView
@@ -125,8 +126,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
                         android:layout_width="379dp"
-                        android:layout_height="match_parent"
-                        />
+                        android:layout_height="match_parent" />
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
 
@@ -137,7 +137,7 @@
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </ScrollView>
 

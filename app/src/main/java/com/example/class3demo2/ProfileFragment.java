@@ -87,9 +87,9 @@ public class ProfileFragment extends Fragment {
         binding.profileNameEt.setText(loggedInUser.getName());
 
         if (loggedInUser.getPhotoURL() != null) {
-            Picasso.get().load(loggedInUser.getPhotoURL()).placeholder(R.drawable.profile_image).into(avatarImage);
+            Picasso.get().load(loggedInUser.getPhotoURL()).placeholder(R.drawable.reg_image).into(avatarImage);
         } else {
-            avatarImage.setImageResource(R.drawable.profile_image);
+            avatarImage.setImageResource(R.drawable.reg_image);
         }
     }
 
