@@ -133,7 +133,7 @@ public class ProfileFragment extends Fragment {
                 Log.d("TAG", "Row was clicked " + pos);
                 Student st = viewModel.getDataByUser().getValue().get(pos);
                 ProfileFragmentDirections.ActionProfileFragmentToEditDogFragment action;
-                action = ProfileFragmentDirections.actionProfileFragmentToEditDogFragment(st.name, st.age, st.description, st.avatarUrl, st.id);
+                action = ProfileFragmentDirections.actionProfileFragmentToEditDogFragment(st.name, st.age, st.description, st.avatarUrl, st.id, st.cb);
                 Navigation.findNavController(view).navigate(action);
             }
         });

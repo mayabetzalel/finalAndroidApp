@@ -26,6 +26,9 @@
         <argument
             android:name="dogId"
             app:argType="string" />
+        <argument
+            android:name="dogCb"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/studentsListFragment"

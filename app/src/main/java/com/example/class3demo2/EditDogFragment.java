@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.class3demo2.databinding.FragmentEditDogBinding;
@@ -47,12 +48,15 @@ public class EditDogFragment extends Fragment {
         String description = EditDogFragmentArgs.fromBundle(getArguments()).getDogDescription();
         String image = EditDogFragmentArgs.fromBundle(getArguments()).getDogImage();
         id = EditDogFragmentArgs.fromBundle(getArguments()).getDogId();
-
+        boolean isAvailable = EditDogFragmentArgs.fromBundle(getArguments()).getDogCb();
 
         TextView nameTv = view.findViewById(R.id.name);
         TextView ageTv = view.findViewById(R.id.age);
         ImageView imageTv = view.findViewById(R.id.image);
         TextView descriptionTv = view.findViewById(R.id.description);
+        Switch switchTv = view.findViewById(R.id.available);
+
+        switchTv.setChecked(isAvailable);
 
         if (name != null) {
             nameTv.setText(name);
@@ -67,6 +71,10 @@ public class EditDogFragment extends Fragment {
             descriptionTv.setText(description);
         }
 
+        switchTv.setOnClickListener(view1-> {
+            Model.instance().updateDogByField(id, "cb", !isAvailable, (unused)->{});
+        });
+
         View button = view.findViewById(R.id.saveUpdatesBtn);
         button.setOnClickListener((view1)-> {
             TextView oldName = view.findViewById(R.id.name);
@@ -79,6 +87,7 @@ public class EditDogFragment extends Fragment {
             String nAge = oldAge.getText().toString();
             long newAge = age;
             Boolean isValidAge = oldAge.getText().toString().matches("[0-9]+");
+
             if (isValidAge) {
                 newAge = Long.parseLong(nAge);
             }
