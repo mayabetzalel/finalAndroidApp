@@ -87,9 +87,9 @@ public class ProfileFragment extends Fragment {
         binding.profileNameEt.setText(loggedInUser.getName());
 
         if (loggedInUser.getPhotoURL() != null) {
-            Picasso.get().load(loggedInUser.getPhotoURL()).placeholder(R.drawable.avatar).into(avatarImage);
+            Picasso.get().load(loggedInUser.getPhotoURL()).placeholder(R.drawable.profile_image).into(avatarImage);
         } else {
-            avatarImage.setImageResource(R.drawable.avatar);
+            avatarImage.setImageResource(R.drawable.profile_image);
         }
     }
 
@@ -133,7 +133,7 @@ public class ProfileFragment extends Fragment {
                 Log.d("TAG", "Row was clicked " + pos);
                 Student st = viewModel.getDataByUser().getValue().get(pos);
                 ProfileFragmentDirections.ActionProfileFragmentToEditDogFragment action;
-                action = ProfileFragmentDirections.actionProfileFragmentToEditDogFragment(st.name, st.age, st.description, st.avatarUrl, st.id);
+                action = ProfileFragmentDirections.actionProfileFragmentToEditDogFragment(st.name, st.age, st.description, st.avatarUrl, st.id, st.cb);
                 Navigation.findNavController(view).navigate(action);
             }
         });

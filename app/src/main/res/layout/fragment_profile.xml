@@ -78,7 +78,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:text="SAVE" />
+                    android:text="SAVE"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="#FFFFFF"
+                    android:textColorHint="#000000"
+                    android:textStyle="bold"
+                    android:textColorLink="#FFFFFF" />
 
                 <Button
                     android:id="@+id/profile_cancel_btn"
@@ -86,7 +91,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:text="RESET" />
+                    android:text="RESET"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="#FFFFFF"
+                    android:textColorHint="#000000"
+                    android:textStyle="bold"
+                    android:textColorLink="#FFFFFF" />
 
                 <Button
                     android:id="@+id/profile_logout_btn"
@@ -94,7 +104,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
-                    android:text="LOGOUT" />
+                    android:text="LOGOUT"
+                    android:textColor="#FFFFFF"
+                    android:textColorHighlight="#FFFFFF"
+                    android:textColorHint="#000000"
+                    android:textStyle="bold"
+                    android:textColorLink="#FFFFFF" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.core.widget.NestedScrollView
