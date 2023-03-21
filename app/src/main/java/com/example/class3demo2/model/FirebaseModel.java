@@ -94,8 +94,8 @@ public class FirebaseModel{
     }
 
     public void updateByField(String dogId,String field, Object value, Model.Listener<Void> listener) {
-        db.collection(Dog.COLLECTION).document(dogId).update(field, value, "lastUpdated", java.time.LocalDateTime.now())
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection(Dog.COLLECTION).document(dogId).update(field, value)
+                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         listener.onComplete(null);
