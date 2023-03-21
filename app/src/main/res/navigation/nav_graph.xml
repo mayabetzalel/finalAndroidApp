@@ -35,7 +35,7 @@
         android:name="com.example.class3demo2.StudentsListFragment"
         android:label="Dogs List"
         android:textColor="@android:color/black"
-        tools:layout="@layout/fragment_students_list">
+        tools:layout="@layout/fragment_dogs_list">
         <action
             android:id="@+id/action_studentsListFragment_to_blueFragment"
             app:destination="@id/blueFragment" />
@@ -68,7 +68,7 @@
         android:id="@+id/addDogFragment"
         android:name="com.example.class3demo2.AddDogFragment"
         android:label="Add New Dog"
-        tools:layout="@layout/fragment_add_student" />
+        tools:layout="@layout/fragment_add_dog" />
     <action android:id="@+id/action_global_addStudentFragment" app:destination="@id/addDogFragment" />
     <fragment
         android:id="@+id/aboutFragment"

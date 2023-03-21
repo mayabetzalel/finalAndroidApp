@@ -1,7 +1,5 @@
 package com.example.class3demo2;
 
-import android.util.Log;
-
 import com.example.class3demo2.model.Model;
 import com.example.class3demo2.model.Student;
 
@@ -10,7 +8,7 @@ import java.util.List;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-public class StudentsListFragmentViewModel extends ViewModel {
+public class DogsListFragmentViewModel extends ViewModel {
     private LiveData<List<Student>> data = Model.instance().getAllStudents();;
 
     private LiveData<List<Student>> dataByUser = Model.instance().getAllDogsByUser();

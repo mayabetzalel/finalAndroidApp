@@ -23,13 +23,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.class3demo2.databinding.FragmentAddStudentBinding;
+import com.example.class3demo2.databinding.FragmentAddDogBinding;
 import com.example.class3demo2.model.Dog;
 import com.example.class3demo2.model.Model;
 import com.example.class3demo2.model.RandomDogPhotoModel;
 
 public class AddDogFragment extends Fragment {
-    FragmentAddStudentBinding binding;
+    FragmentAddDogBinding binding;
     ActivityResultLauncher<Void> cameraLauncher;
     ActivityResultLauncher<String> galleryLauncher;
 
@@ -74,7 +74,7 @@ public class AddDogFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentAddStudentBinding.inflate(inflater,container,false);
+        binding = FragmentAddDogBinding.inflate(inflater,container,false);
         View view = binding.getRoot();
 
         binding.saveBtn.setOnClickListener(view1 -> {

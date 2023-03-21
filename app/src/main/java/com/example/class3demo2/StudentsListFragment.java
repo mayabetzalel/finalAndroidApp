@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.class3demo2.databinding.FragmentStudentsListBinding;
+import com.example.class3demo2.databinding.FragmentDogsListBinding;
 import com.example.class3demo2.model.Model;
 import com.example.class3demo2.model.Student;
 
@@ -19,23 +19,23 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 public class StudentsListFragment extends Fragment {
-    FragmentStudentsListBinding binding;
-    StudentRecyclerAdapter adapter;
-    StudentsListFragmentViewModel viewModel;
+    FragmentDogsListBinding binding;
+    DogRecyclerAdapter adapter;
+    DogsListFragmentViewModel viewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentStudentsListBinding.inflate(inflater, container, false);
+        binding = FragmentDogsListBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new StudentRecyclerAdapter(getLayoutInflater(), viewModel.getData().getValue(), false);
+        adapter = new DogRecyclerAdapter(getLayoutInflater(), viewModel.getData().getValue(), false);
         binding.recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new StudentRecyclerAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new DogRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int pos) {
                 Log.d("TAG", "Row was clicked " + pos);
@@ -70,7 +70,7 @@ public class StudentsListFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        viewModel = new ViewModelProvider(this).get(StudentsListFragmentViewModel.class);
+        viewModel = new ViewModelProvider(this).get(DogsListFragmentViewModel.class);
     }
 
     void reloadData(){

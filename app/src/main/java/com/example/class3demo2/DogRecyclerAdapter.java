@@ -16,14 +16,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-class StudentViewHolder extends RecyclerView.ViewHolder{
+class DogViewHolder extends RecyclerView.ViewHolder{
     TextView nameTv;
     TextView idTv;
     CheckBox cb;
     List<Student> data;
     ImageView avatarImage;
     boolean isFromProfile = false;
-    public StudentViewHolder(@NonNull View itemView, StudentRecyclerAdapter.OnItemClickListener listener, List<Student> data, boolean isFromProfileInput) {
+    public DogViewHolder(@NonNull View itemView, DogRecyclerAdapter.OnItemClickListener listener, List<Student> data, boolean isFromProfileInput) {
         super(itemView);
         isFromProfile = isFromProfileInput;
         this.data = data;
@@ -66,7 +66,7 @@ class StudentViewHolder extends RecyclerView.ViewHolder{
     }
 }
 
-public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHolder>{
+public class DogRecyclerAdapter extends RecyclerView.Adapter<DogViewHolder>{
     OnItemClickListener listener;
     public static interface OnItemClickListener{
         void onItemClick(int pos);
@@ -80,7 +80,7 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHold
         this.data = data;
         notifyDataSetChanged();
     }
-    public StudentRecyclerAdapter(LayoutInflater inflater, List<Student> data, boolean isFromProfile){
+    public DogRecyclerAdapter(LayoutInflater inflater, List<Student> data, boolean isFromProfile){
         this.inflater = inflater;
         this.data = data;
         this.isFromProfile = isFromProfile;
@@ -92,13 +92,13 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHold
     }
     @NonNull
     @Override
-    public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.student_list_row,parent,false);
-        return new StudentViewHolder(view,listener, data, this.isFromProfile);
+    public DogViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = inflater.inflate(R.layout.dog_list_row,parent,false);
+        return new DogViewHolder(view,listener, data, this.isFromProfile);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull StudentViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DogViewHolder holder, int position) {
         Student st = data.get(position);
         holder.bind(st,position);
     }

@@ -52,7 +52,7 @@
         <ImageView
             android:id="@+id/avatarImg"
             android:layout_width="400dp"
-            android:layout_height="291dp"
+            android:layout_height="180dp"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:scaleType="fitCenter"

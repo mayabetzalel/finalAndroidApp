@@ -52,8 +52,8 @@ public class ProfileFragment extends Fragment {
     ActivityResultLauncher<String> galleryLauncher;
     Boolean isAvatarSelected = false;
 
-    StudentRecyclerAdapter adapter;
-    StudentsListFragmentViewModel viewModel;
+    DogRecyclerAdapter adapter;
+    DogsListFragmentViewModel viewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,7 +95,7 @@ public class ProfileFragment extends Fragment {
 
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        viewModel = new ViewModelProvider(this).get(StudentsListFragmentViewModel.class);
+        viewModel = new ViewModelProvider(this).get(DogsListFragmentViewModel.class);
     }
 
     @Override
@@ -118,7 +118,7 @@ public class ProfileFragment extends Fragment {
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new StudentRecyclerAdapter(getLayoutInflater(),viewModel.getDataByUser().getValue(), true);
+        adapter = new DogRecyclerAdapter(getLayoutInflater(),viewModel.getDataByUser().getValue(), true);
         binding.recyclerView.setAdapter(adapter);
 
         setUpData(view);
@@ -127,7 +127,7 @@ public class ProfileFragment extends Fragment {
             adapter.setData(list);
         });
 
-        adapter.setOnItemClickListener(new StudentRecyclerAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new DogRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int pos) {
                 Log.d("TAG", "Row was clicked " + pos);
